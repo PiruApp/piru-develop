@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/* ── Light palette (default) ── */
+:root {
+  --color-primary: #B84A39;
+  --color-primary-hover: #9A3D2F;
+  --color-primary-container: #FAEAE7;
+  --color-on-primary: #ffffff;
+  --color-secondary: #6C665F;
+  --color-secondary-container: #E6E2DE;
+  --color-surface: #ffffff;
+  --color-surface-dim: #EDEBE8;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #F8F7F5;
+  --color-surface-container: #F2F0ED;
+  --color-surface-container-high: #EDEBE8;
+  --color-success: #16a34a;
+  --color-success-container: #dcfce7;
+  --color-warning: #ea580c;
+  --color-warning-container: #fff7ed;
+  --color-info: #0284c7;
+  --color-whatsapp: #25d366;
+  --color-glass: rgba(255, 255, 255, 0.65);
+  --color-glass-border: rgba(255, 255, 255, 0.5);
+  --color-text: #2D3142;
+}
+
+/* ── Viajero — terracota ── */
+[data-theme="viajero"] {
+  --color-primary: #B84A39;
+  --color-primary-hover: #9A3D2F;
+  --color-primary-container: #FAEAE7;
+}
+
+/* ── Guía — verde bosque ── */
+[data-theme="guia"] {
+  --color-primary: #5B7F4A;
+  --color-primary-hover: #4A6B3D;
+  --color-primary-container: #E8F0E4;
+}
+
+/* ── Hotel — ámbar dorado ── */
+[data-theme="hotel"] {
+  --color-primary: #E09F3E;
+  --color-primary-hover: #C88A2F;
+  --color-primary-container: #FDF3E0;
+}
+
+/* ── Restaurante — siena cálido ── */
+[data-theme="restaurante"] {
+  --color-primary: #8B5E3C;
+  --color-primary-hover: #744E32;
+  --color-primary-container: #F3E8DF;
+}
+
+/* ── Dark mode via system preference ── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-mode="light"]):not([data-theme="light"]) {
+    --color-surface: #121218;
+    --color-surface-dim: #1E1E26;
+    --color-surface-container-lowest: #0C0C10;
+    --color-surface-container-low: #18181F;
+    --color-surface-container: #1E1E26;
+    --color-surface-container-high: #26262F;
+    --color-secondary: #9B9690;
+    --color-secondary-container: #2A2A32;
+    --color-primary-container: #3D2520;
+    --color-success-container: #1a3a24;
+    --color-warning-container: #3a2010;
+    --color-glass: rgba(18, 18, 24, 0.65);
+    --color-glass-border: rgba(255, 255, 255, 0.08);
+    --color-text: #E8E6E3;
+  }
+}
+
+/* ── Dark mode via explicit attribute ── */
+:root[data-mode="dark"],
+:root[data-theme="dark"] {
+  --color-surface: #121218;
+  --color-surface-dim: #1E1E26;
+  --color-surface-container-lowest: #0C0C10;
+  --color-surface-container-low: #18181F;
+  --color-surface-container: #1E1E26;
+  --color-surface-container-high: #26262F;
+  --color-secondary: #9B9690;
+  --color-secondary-container: #2A2A32;
+  --color-primary-container: #3D2520;
+  --color-success-container: #1a3a24;
+  --color-warning-container: #3a2010;
+  --color-glass: rgba(18, 18, 24, 0.65);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-text: #E8E6E3;
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-container: var(--color-primary-container);
+  --color-on-primary: var(--color-on-primary);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-container: var(--color-secondary-container);
+  --color-surface: var(--color-surface);
+  --color-surface-dim: var(--color-surface-dim);
+  --color-surface-lowest: var(--color-surface-container-lowest);
+  --color-surface-low: var(--color-surface-container-low);
+  --color-surface-mid: var(--color-surface-container);
+  --color-surface-high: var(--color-surface-container-high);
+  --color-success: var(--color-success);
+  --color-success-container: var(--color-success-container);
+  --color-warning: var(--color-warning);
+  --color-warning-container: var(--color-warning-container);
+  --color-info: var(--color-info);
+  --color-glass: var(--color-glass);
+  --color-glass-border: var(--color-glass-border);
+  --color-text: var(--color-text);
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+}
+
+/* ── Liquid glass — Apple-style translucent material ── */
+.glass {
+  background: var(--color-glass);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid var(--color-glass-border);
+  box-shadow:
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.25),
+    0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: var(--color-surface-lowest);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* ── Form inputs adapt to dark mode ── */
+input, textarea, select {
+  color: var(--color-text);
+  background: var(--color-surface-container-lowest);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-secondary);
+}
+
+/* ── Modal animation ── */
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ── Skeleton shimmer ── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--color-surface-container-high) 25%, var(--color-surface-container) 50%, var(--color-surface-container-high) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 0.5rem;
+}

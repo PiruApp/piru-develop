@@ -1,0 +1,24 @@
+# Claves y configuración local: nunca al repositorio (DOC-04A §14)
+.env
+.env.*
+!.env.example
+frontend/.env.local
+
+# Backend (Maven)
+backend/target/
+
+# Frontend (Next.js)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/tsconfig.tsbuildinfo
+
+# IDE y sistema
+.idea/
+.DS_Store
+*.log
+
+# Claude Code (config local del asistente)
+.claude/
+frontend/.claude/
+frontend/AGENTS.md
